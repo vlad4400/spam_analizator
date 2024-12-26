@@ -1,0 +1,22 @@
+# Wirtualne środowisko
+venv/
+venv/*
+
+# Pliki środowiskowe (np. konfiguracja środowiska, hasła)
+.env
+*.env
+
+# Pliki Python generowane w trakcie działania
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Bazy danych (np. SQLite)
+*.sqlite3
+
+# Ewentualnie pliki logów, jeśli takie generujesz lokalnie
+*.log
+
+# Inne systemowe (np. macOS)
+.DS_Store
