@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-mh1b130@_v5y3%(yzv@uoe1bk11@%(+cx*91lfz!s+a@a4$h91
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'my-backend-service-955511185320.europe-west1.run.app',
+]
 
 
 # Application definition
@@ -126,9 +128,15 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:4200",
+# ]
+
+# Use this setting to allow all origins
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Alternatively, if using an older version of django-cors-headers
+CORS_ORIGIN_ALLOW_ALL = True  # Older versions
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.openapi.AutoSchema',

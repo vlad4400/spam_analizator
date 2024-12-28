@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: spam_backend
     ports:
-      - "8000:8000"
+      - "8000:8080"
     volumes:
       - ./backend:/app
     # ewentualnie zmienne środowiskowe
@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
     container_name: spam_frontend
     ports:
-      - "4200:80"
+      - "4200:8080"
     # jesli chcesz auto-odświeżanie, mount?
     # volumes:
     #   - ./frontend:/app

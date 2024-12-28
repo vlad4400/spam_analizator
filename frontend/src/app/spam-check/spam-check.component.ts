@@ -34,7 +34,7 @@ export class SpamCheckComponent implements AfterViewInit {
     const payload = { email_text: this.emailText };
 
     this.http
-      .post<any>('http://127.0.0.1:8000/api/check_spam/', payload)
+      .post<any>('https://my-backend-service-955511185320.europe-west1.run.app/api/check_spam/', payload)
       .pipe(switchMap((response) => of(response).pipe(delay(1000)))) // min. 1 sekunda
       .subscribe({
         next: (response) => {

@@ -20,10 +20,16 @@ RUN npm run build --prod
 # Drugi stage - serwer (np. użyjemy Nginx do hostowania buildu)
 FROM nginx:stable-alpine as production-stage
 
+# Usunięcie domyślnego configu
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Skopiuj swój config (zawiera "listen 8080")
+COPY default.conf /etc/nginx/conf.d/default.conf
+
 # Skopiuj z poprzedniego stage pliki z dist/ do /usr/share/nginx/html
 COPY --from=build-stage /app/dist/frontend/browser /usr/share/nginx/html
 
 # Otwórz port 80
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
