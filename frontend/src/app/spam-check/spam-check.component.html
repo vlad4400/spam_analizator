@@ -1,0 +1,14 @@
+<h2>Spam Checker (Standalone)</h2>
+
+<textarea
+  [(ngModel)]="emailText"
+  rows="4"
+  placeholder="Treść e-maila"
+  style="width: 100%;"
+></textarea>
+
+<button (click)="checkSpam()">Sprawdź spam</button>
+
+<div *ngIf="spamResult !== null">
+  <p>Wynik klasyfikacji: <b>{{ spamResult }}</b></p>
+</div>

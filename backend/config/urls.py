@@ -16,9 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.schemas import get_schema_view
+
+schema_view = get_schema_view(
+    title="Spam Checker API",
+    description="Description of API methods for redirecting spam",
+    version="1.0.0"
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('schema/', schema_view, name='openapi-schema'),
 ]
 
