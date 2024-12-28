@@ -1,20 +1,30 @@
-version: '3.8'
+# docker-compose.yml
 
+version: '3.8'
 services:
   backend:
-    build:
+    build: 
       context: ./backend
-    container_name: backend
+      dockerfile: Dockerfile
+    container_name: spam_backend
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app
+    # ewentualnie zmienne środowiskowe
+    # environment:
+    #   - DEBUG=1
+    #   - ...
+    # depends_on: [db]  # jeśli byłaby osobna baza
 
   frontend:
     build:
       context: ./frontend
-    container_name: frontend
+      dockerfile: Dockerfile
+    container_name: spam_frontend
     ports:
-      - "4200:4200"
-    volumes:
-      - ./frontend:/usr/src/app
+      - "4200:80"
+    # jesli chcesz auto-odświeżanie, mount?
+    # volumes:
+    #   - ./frontend:/app
+
