@@ -1,30 +1,21 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
-
-@api_view(['GET'])
-def hello_world(request):
-    """
-    Prosty przykład function-based view z DRF.
-    Obsługuje TYLKO metodę GET (dzięki ['GET'] w dekoratorze).
-    """
-    return Response({"message": "Hello from DRF function-based view!"})
-
+from django.apps import apps
 
 @api_view(['POST'])
 def spam_check(request):
-    """
-    Przyjmuje metodę POST z JSON-em w formacie:
-    {
-       "email_text": "Your message here"
-    }
-    """
-    email_text = request.data.get('email_text', '')
+    # Treść z JSON-a: np. {"email_text": "Hello..."}
+    text = request.data.get('email_text', '')
+    
+    print(text)
 
-    # Prosta logika: jeśli w treści jest 'win', to spam, inaczej ham
-    if "win" in email_text.lower():
-        result = "spam"
-    else:
-        result = "ham"
+    # Pobieramy nasz classifier z ApiConfig
+    api_config = apps.get_app_config('api')  # nazwa klasy w apps.py -> ApiConfig
+    classifier = api_config.spam_classifier
 
-    return Response({"result": result}, status=status.HTTP_200_OK)
+    # Predykcja
+    label = classifier.predict(text)
+    # label = 1 -> spam, 0 -> ham
+    result = "spam" if label == 1 else "ham"
+
+    return Response({"result": result})

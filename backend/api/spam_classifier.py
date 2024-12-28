@@ -16,13 +16,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 
-# Upewnij się, że wykonałeś:
-# nltk.download('punkt')
-# nltk.download('stopwords')
-# nltk.download('wordnet')
-
 class SpamClassifier:
     def __init__(self, csv_path: str):
+        # Upewnij się, że wykonałeś:
+        nltk.download('punkt')
+        nltk.download('stopwords')
+        nltk.download('wordnet')
+        
         """
         :param csv_path: ścieżka do pliku 'spam_NLP.csv'
                          zakładamy, że kolumny to [CATEGORY, MESSAGE, ...]
