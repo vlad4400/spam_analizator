@@ -1,14 +1,28 @@
-<h2>Spam Checker (Standalone)</h2>
+<!-- Kontener na tło D3 -->
+<div #d3background class="d3-bg"></div>
 
-<textarea
-  [(ngModel)]="emailText"
-  rows="4"
-  placeholder="Treść e-maila"
-  style="width: 100%;"
-></textarea>
+<!-- Główna zawartość formularza -->
+<div class="container">
+  <h2 class="fancy-title">Spam Checker</h2>
 
-<button (click)="checkSpam()">Sprawdź spam</button>
+  <div class="form-group">
+    <label for="emailText">Treść e-maila:</label>
+    <textarea
+      id="emailText"
+      [(ngModel)]="emailText"
+      rows="10"
+      placeholder="Wpisz treść e-maila"
+    ></textarea>
+  </div>
 
-<div *ngIf="spamResult !== null">
-  <p>Wynik klasyfikacji: <b>{{ spamResult }}</b></p>
+  <button class="check-button" (click)="checkSpam()">Sprawdź spam</button>
+
+  <!-- prosty loader -->
+  <div class="spinner-overlay" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="result" *ngIf="spamResult !== null && !loading">
+    <p>Wynik klasyfikacji: <strong>{{ spamResult }}</strong></p>
+  </div>
 </div>

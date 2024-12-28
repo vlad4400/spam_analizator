@@ -1,0 +1,123 @@
+/* Styl kontenera na tło D3 */
+.d3-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* ukrywamy ewentualne elementy */
+  z-index: -1; /* w tle */
+}
+
+/* Reszta stylów np. z poprzedniego przykładu */
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  font-family: "Helvetica Neue", sans-serif;
+  position: relative;
+}
+
+.fancy-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #4f2e90;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  font-weight: bold;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group textarea {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group textarea:focus {
+  outline: none;
+  border-color: #8553c4;
+}
+
+.check-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #6e3ab2;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(110, 58, 178, 0.3);
+}
+
+.check-button:hover {
+  background: #5a2d90;
+  transform: translateY(-2px);
+}
+
+.check-button:active {
+  background: #4d2578;
+  transform: translateY(0);
+}
+
+.spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ccc;
+  border-top-color: #6e3ab2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.result {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: #222;
+  text-align: center;
+}
+.result strong {
+  color: #6e3ab2;
+  font-weight: bold;
+}
